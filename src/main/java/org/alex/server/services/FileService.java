@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -15,6 +16,10 @@ import java.util.stream.Stream;
 public class FileService {
 
     public static final String DEFAULT_DIR="/home/aleksandar/Downloads/";
+
+    public void saveImage(String path, byte[] imageBinary) throws IOException {
+        Files.write(Path.of(URI.create(path)), imageBinary);
+    }
 
     public List<String> getAlbumsInDir(String dir) throws IOException {
         try (Stream<Path> stream = Files.list(Path.of(DEFAULT_DIR+dir))) {
