@@ -18,7 +18,7 @@ public class FileService {
     public static final String DEFAULT_DIR="/home/aleksandar/Downloads/";
 
     public void saveImage(String path, byte[] imageBinary) throws IOException {
-        Files.write(Path.of(URI.create(path)), imageBinary);
+        Files.write(Path.of(URI.create(path+DEFAULT_DIR+"image.png")), imageBinary);
     }
 
     public List<String> getAlbumsInDir(String dir) throws IOException {
